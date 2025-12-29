@@ -234,6 +234,11 @@ print(f"Attractor dimension: {result['dimension']:.2f}")
 print(f"Lyapunov exponent: {result['lyapunov']:.4f}")
 ```
 
+#### Shadow Manifold Analysis
+
+![Shadow Manifold](figures/shadow_manifold.png)
+*Convergent Cross Mapping (CCM) Shadow Manifold: Visualization of causal relationships in dynamical systems using Takens embedding. The shadow manifold reveals how information flows between coupled market variables, enabling detection of hidden causal connections that linear correlation analysis would miss.*
+
 #### LyapunovExponent
 
 ```python
@@ -344,6 +349,11 @@ print(f"Vanna: {greeks['vanna']:.4f}")
 print(f"Volga: {greeks['volga']:.4f}")
 ```
 
+#### Value at Risk Surface
+
+![VaR Surface](figures/var_surface.png)
+*3D Value at Risk Topology: Comprehensive risk surface showing VaR estimates across different confidence levels and time horizons. The surface enables visualization of tail risk exposure, revealing how potential losses scale with holding period and confidence threshold.*
+
 #### Implied Volatility Surface
 
 ![IV Surface](figures/iv_surface.png)
@@ -366,6 +376,12 @@ print(f"Butterfly: {skew_metrics['butterfly_25d']*100:.2f}%")
 
 ### 4.5 Portfolio Optimization (`src/portfolio/`)
 
+![Risk-Return-Time Surface](figures/risk_return_time.png)
+*3D Efficient Frontier Evolution: Dynamic visualization of portfolio risk-return characteristics over time. The surface shows how the efficient frontier evolves, with color gradients indicating Sharpe ratio performance across different risk levels and time periods.*
+
+![Sharpe Surface](figures/sharpe_surface.png)
+*Sharpe Ratio Optimization Landscape: 3D surface showing risk-adjusted returns across different allocation strategies. The topology reveals optimal allocation zones where Sharpe ratios peak, guiding portfolio construction decisions.*
+
 #### Hierarchical Risk Parity
 
 ```python
@@ -383,6 +399,9 @@ risk_contrib = hrp.risk_contribution(result.weights, cov_matrix)
 ```
 
 #### Kelly Criterion
+
+![Kelly Surface](figures/kelly_surface.png)
+*Kelly Optimal Bet Sizing Surface: 3D visualization showing optimal growth rate as a function of win probability and payoff ratio. The surface reveals how the Kelly fraction changes across different trading scenarios, with peak growth rates occurring at high win probability and favorable payoff ratios.*
 
 ```python
 from src.portfolio.kelly import KellyCriterion, FractionalKelly
@@ -415,13 +434,16 @@ The framework includes a comprehensive 3D visualization suite designed for physi
 | Visualization | Description | Use Case |
 |--------------|-------------|----------|
 | Lorenz Attractor | 3D phase space dynamics | Market structure analysis |
+| Attractor Reconstruction | Takens embedding visualization | Pattern recognition |
+| Shadow Manifold | CCM causal relationships | Hidden causality detection |
 | IV Surface | Volatility topology | Tail risk assessment |
+| VaR Surface | Risk across confidence/time | Tail risk quantification |
 | Greeks Surfaces | Multi-dimensional risk | Position management |
 | Risk-Return-Time | 3D efficient frontier evolution | Portfolio dynamics |
+| Sharpe Surface | Risk-adjusted return landscape | Allocation optimization |
 | Fokker-Planck | Probability density evolution | Distribution forecasting |
-| Regime Transitions | HMM state probabilities | Regime monitoring |
+| HMM Regimes | Market state probabilities | Regime monitoring |
 | Kelly Surface | Optimal growth rates | Position sizing |
-| Phase Portraits | Attractor reconstruction | Pattern recognition |
 
 ### 5.2 Generating Visualizations
 
