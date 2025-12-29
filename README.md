@@ -194,6 +194,9 @@ The system follows the principle of **Separation of Concerns**, organized into f
 
 #### LorenzSystem
 
+![Lorenz Attractor](figures/lorenz_attractor.png)
+*The Lorenz Attractor: 3D phase space visualization of deterministic chaos. The butterfly-shaped attractor demonstrates sensitive dependence on initial conditions - the hallmark of chaotic systems in financial markets.*
+
 ```python
 from src.core.lorenz import LorenzSystem, transform_prices_to_lorenz
 
@@ -215,6 +218,9 @@ x, y, z = transform_prices_to_lorenz(prices, window=20, sigma=13.0)
 ```
 
 #### PhaseSpaceReconstructor
+
+![Attractor Reconstruction](figures/attractor_reconstruction.png)
+*Takens Embedding (m=3, τ=10): Phase space reconstruction from price series reveals the underlying attractor structure. Color gradient represents time evolution.*
 
 ```python
 from src.core.phase_space import PhaseSpaceReconstructor
@@ -266,6 +272,9 @@ print(f"Half-life of mean reversion: {params['half_life']:.1f} days")
 
 #### Fokker-Planck Equation
 
+![Fokker-Planck Evolution](figures/fokker_planck.png)
+*Price Distribution Dynamics: Evolution of probability density over time showing spreading (diffusion σ), drift (mean movement μ), and potential regime bifurcation.*
+
 ```python
 from src.models.stochastic import FokkerPlanck
 
@@ -286,6 +295,9 @@ es_95 = fp.expected_shortfall(P_T, confidence=0.95)
 ```
 
 ### 4.3 Hidden Markov Models (`src/models/hmm.py`)
+
+![HMM Regime Detection](figures/hmm_regimes.png)
+*Market State Detection via Viterbi Decoding: Stacked area chart showing regime probabilities over time. Bull (low volatility), Bear (high volatility), and Sideways regimes are clearly distinguishable.*
 
 ```python
 from src.models.hmm import HiddenMarkovRegime, ViterbiDecoder, BaumWelchTrainer
@@ -310,6 +322,9 @@ if confidence > 0.9:
 
 #### Black-Scholes Greeks
 
+![Greek Surfaces](figures/greeks_surfaces.png)
+*3D Risk Exposure Mapping: Visualization of Gamma (Γ: Delta Convexity), Vega (ν: Volatility Exposure), Cross Sensitivity (∂Δ/∂σ), and Vega Convexity (∂ν/∂σ) across moneyness and maturity dimensions.*
+
 ```python
 from src.models.options import BlackScholes, OptionType
 
@@ -330,6 +345,9 @@ print(f"Volga: {greeks['volga']:.4f}")
 ```
 
 #### Implied Volatility Surface
+
+![IV Surface](figures/iv_surface.png)
+*SABR Model Volatility Surface: Topology of market fear showing the characteristic volatility smile and term structure. The ATM line (red) highlights at-the-money implied volatility across expirations. Lower moneyness shows higher IV due to put protection premium (skew < 0).*
 
 ```python
 from src.models.options import ImpliedVolatilitySurface, GreeksSurface
